@@ -1,0 +1,128 @@
+<style>
+/* button */
+.btn.btn-primary {
+	color: #FFF;
+	background-color: #0047ab;
+	outline: none;
+	border: none;
+}
+.btn.btn-primary:hover {
+	color: #FFF;
+}
+.powered-by {
+	display: none;
+}
+
+/* link */
+.link-list {
+	font-size: 16px;
+}
+a.link-list__link i {
+	font-size: 14px;
+	line-height: 14px;
+	margin-right: 2px;
+	top: -1px;
+	position: relative;
+}
+a.link-list__link i.fa.fa-heart {
+    color: #d44848;
+}
+
+/* search */
+.search-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.86);
+    z-index: 10;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.search-modal.active {
+	display: block;
+}
+.search-modal input[type="search"] {
+	display: block;
+    width: 600px;
+    margin: 314px auto 0;
+    padding: 14px 18px;
+    font-size: 20px;
+    background: #eff3fb;
+    border: 1px solid #90a0c5;
+    box-shadow: 0 0 20px #dbe8f5;
+    border-radius: 4px;
+    outline: 0;
+}
+.search-modal input[type="search"]::-webkit-search-decoration,
+.search-modal input[type="search"]::-webkit-search-cancel-button,
+.search-modal input[type="search"]::-webkit-search-results-button,
+.search-modal input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.search-modal input[type="search"]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #90a0c5;
+  opacity: 1; /* Firefox */
+}
+
+.search-modal input[type="search"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #90a0c5;
+}
+
+.search-modal input[type="search"]::-ms-input-placeholder { /* Microsoft Edge */
+  color: #90a0c5;
+}
+
+
+.search-modal span.close {
+	font-size: 2.6rem;
+	padding: .5rem;
+	position: fixed;
+	top: 2rem;
+	line-height: 1rem;
+	right: 2.5rem;
+	z-index: 1;
+	cursor: pointer;
+}
+</style>
+
+
+<div class="search-modal">
+	<span class="close"><i class="fas fa-times"></i></span>
+	<input placeholder="Type something..." type="search" id="searchBox" onsearch="search()">
+</div>
+
+
+<script>
+
+	var searchBox = document.querySelector('.search-modal');
+	var searchLink = 'https://app.intoprofits.com/products/apex-seller-grant-s-design/search?q='
+
+	document.querySelector('i.fa.fa-facebook').setAttribute('class', 'fab fa-facebook-f' )
+	document.querySelector('.openSearchModal').addEventListener('click', toggleSearchModal)
+	document.querySelector('span.close').addEventListener('click', toggleSearchModal)
+
+	function toggleSearchModal() {
+		if (searchBox.classList.contains('active')) {
+			searchBox.classList.remove('active')
+		} else {
+			searchBox.classList.add('active')
+		}
+	}
+
+	function search() {
+		
+		var searchValue = document.querySelector('#searchBox').value;
+
+		if (searchValue) {
+			window.location.replace(searchLink + searchValue);
+		} else {
+			alert('Please type something.')
+		}
+	}
+	
+</script>
