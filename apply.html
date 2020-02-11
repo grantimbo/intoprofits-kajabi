@@ -1,0 +1,58 @@
+<h3 style="margin: 60px 0 40px">Give Your Friends a FREE Consultation &amp; $2,000 OFF</h3>
+<p>Give your friends a free consultation and $2,000 off. If they sign up we&rsquo;ll pay you $1,000 too!</p>
+<p><strong>Here&rsquo;s how it works:</strong></p>
+<ol>
+    <li> Invite your friend to claim a free consultation on scaling his/her private label business on Amazon, by filling in the short form on this page. Ask them to mention your name in the &ldquo;Were you referred by one of our students?&rdquo; field: <a href="https://intoprofits.com/apply">https://intoprofits.com/apply</a></li>
+    <li> Your friend will select a time to speak with someone on our team and see if Apex Seller is a good fit for him/her. If it is, they will receive a $2,000 discount.</li>
+    <li> If your friend decides to sign-up we will reach out and send you $1,000 USD cash immediately.</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>Here&rsquo;s a message template you can use to invite your friends:</strong></p>
+
+<p><button class="btn btn-primary" onclick="copyMsgTemplate()">Copy Template</button></p>
+<div id="successMsg">Template copied to clipboard.</div>
+<textarea id="templateHandler" onclick="copyMsgTemplate()" rows="15" cols="106">
+Hey [NAME],
+
+I know you’re [DOING X RIGHT NOW] and wanting to grow your business. I recently joined a training program that helped me [WITH X] and I think it could really help you too.
+
+You can get a free consultation with Daniel (the creator) to see if this is a good fit for you and your business by using this short form: https://intoprofits.com/apply
+
+Make sure you mention my name on the form because if you join as my friend you’ll get a massive $2,000 discount.
+
+This program transformed my business and I know it can do the same for you.
+
+Best regards,
+[YOUR NAME]
+</textarea>
+
+
+<script>// <![CDATA[
+	function copyMsgTemplate() {
+	  var copyText = document.getElementById("templateHandler");
+	  var successMsg = document.getElementById("successMsg");
+
+	  copyText.select();
+	  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+	  document.execCommand("copy");
+
+	  successMsg.style.display = "inline-block";
+	  setTimeout(function(){ successMsg.style.display = "none"; }, 2000);
+	}
+// ]]></script>
+
+<style>
+	#templateHandler {
+		font-size: 14px;
+		padding: 20px;
+	}
+	#successMsg {
+		background: #4CAF50;
+	    padding: 13px 20px;
+	    color: #fff;
+	    margin-bottom: 10px;
+	    display: none; 
+	    font-size: 14px;
+	}
+</style>
