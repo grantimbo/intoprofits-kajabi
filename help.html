@@ -56,6 +56,8 @@ a.link-list__link i.fa.fa-heart {
     box-shadow: 0 0 20px #dbe8f5;
     border-radius: 4px;
     outline: 0;
+	font-family: "Raleway", sans-serif;
+	font-weight: normal;
 }
 .search-modal input[type="search"]::-webkit-search-decoration,
 .search-modal input[type="search"]::-webkit-search-cancel-button,
@@ -93,14 +95,17 @@ a.link-list__link i.fa.fa-heart {
 
 <div class="search-modal">
 	<span class="close"><i class="fas fa-times"></i></span>
-	<input placeholder="Type something..." type="search" id="searchBox" onsearch="search()">
+	<input placeholder="Search keywords..." type="search" id="searchBox" onsearch="search()">
 </div>
 
 
 <script>
+	document.title = "How To Get Help | Into Profits";
+	document.querySelector('a[href="https://web.facebook.com/groups/612071275960275"]').setAttribute("target", "_blank");
 
 	var searchBox = document.querySelector('.search-modal');
 	var searchLink = 'https://app.intoprofits.com/products/apex-seller-grant-s-design/search?q='
+
 
 	document.querySelector('i.fa.fa-facebook').setAttribute('class', 'fab fa-facebook-f' )
 	document.querySelector('.openSearchModal').addEventListener('click', toggleSearchModal)

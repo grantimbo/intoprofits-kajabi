@@ -1,8 +1,8 @@
-<h3 style="margin: 60px 0 40px">Give Your Friends a FREE Consultation &amp; $2,000 OFF</h3>
+<h2 style="margin: 60px 0 40px">Give Your Friends a FREE Consultation &amp; $2,000 OFF</h2>
 <p>Give your friends a free consultation and $2,000 off. If they sign up we&rsquo;ll pay you $1,000 too!</p>
 <p><strong>Here&rsquo;s how it works:</strong></p>
 <ol>
-    <li> Invite your friend to claim a free consultation on scaling his/her private label business on Amazon, by filling in the short form on this page. Ask them to mention your name in the &ldquo;Were you referred by one of our students?&rdquo; field: <a href="https://intoprofits.com/apply">https://intoprofits.com/apply</a></li>
+    <li> Invite your friend to claim a free consultation on scaling his/her private label business on Amazon, by filling in the short form on this page. Ask them to mention your name in the &ldquo;Were you referred by one of our students?&rdquo; field: <a style="color: #0658f0" target="_blank" href="https://intoprofits.com/apply">https://intoprofits.com/apply</a></li>
     <li> Your friend will select a time to speak with someone on our team and see if Apex Seller is a good fit for him/her. If it is, they will receive a $2,000 discount.</li>
     <li> If your friend decides to sign-up we will reach out and send you $1,000 USD cash immediately.</li>
 </ol>
@@ -28,6 +28,11 @@ Best regards,
 
 
 <script>// <![CDATA[
+	document.title = "Refer A Friend | Into Profits";
+
+	document.querySelector('a[href="https://web.facebook.com/groups/612071275960275"]').setAttribute("target", "_blank")
+	document.querySelector('i.fa.fa-facebook').setAttribute('class', 'fab fa-facebook-f' )
+
 	function copyMsgTemplate() {
 	  var copyText = document.getElementById("templateHandler");
 	  var successMsg = document.getElementById("successMsg");
@@ -46,13 +51,47 @@ Best regards,
 	#templateHandler {
 		font-size: 14px;
 		padding: 20px;
+		font-family: 'Verdana', Arial, Helvetica, sans-serif
 	}
 	#successMsg {
 		background: #4CAF50;
 	    padding: 13px 20px;
 	    color: #fff;
-	    margin-bottom: 10px;
+	    margin-bottom: 20px;
 	    display: none; 
 	    font-size: 14px;
+	}
+
+	/* button */
+	.btn.btn-primary {
+		color: #FFF;
+		background-color: #0047ab;
+		outline: none;
+		border: none;
+		font-weight: normal;
+		font-size: 14px;
+		border-radius: 4px;
+		padding: 8px 20px;
+	}
+	.btn.btn-primary:hover {
+		color: #FFF;
+	}
+	.powered-by {
+		display: none;
+	}
+
+	/* link */
+	.link-list {
+		font-size: 16px;
+	}
+	a.link-list__link i {
+		font-size: 14px;
+		line-height: 14px;
+		margin-right: 2px;
+		top: -1px;
+		position: relative;
+	}
+	i.fa.fa-heart {
+		color: #d44848;
 	}
 </style>
