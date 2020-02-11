@@ -39,9 +39,6 @@
     img.avatar {
       display: none;
     }
-    .sidebar:last-child {
-      display: none;
-    }
     div.social {
       display: none;
     }
@@ -73,7 +70,17 @@
     input[type="search"]::-ms-input-placeholder { /* Microsoft Edge */
       color: #90a0c5;
     }
+
+    /* minset bonus */
+    a.btn-testimonial {
+        position: absolute;
+        top: 50px;
+        right: 14px;
+    }
   }
 </style>
 
-<script> document.title = "Apex Seller™ | Into Profits"; </script>
+<script>
+document.title = "Apex Seller™ | Into Profits"; 
+document.querySelector('a[href="https://web.facebook.com/groups/612071275960275"]').setAttribute("target", "_blank");
+</script>

@@ -47,8 +47,8 @@ a.link-list__link i.fa.fa-heart {
 }
 .search-modal input[type="search"] {
 	display: block;
-    width: 600px;
-    margin: 314px auto 0;
+	width: auto;
+	margin: 350px auto 0;
     padding: 14px 18px;
     font-size: 20px;
     background: #eff3fb;
@@ -90,6 +90,13 @@ a.link-list__link i.fa.fa-heart {
 	z-index: 1;
 	cursor: pointer;
 }
+
+@media (min-width: 767px) {
+	.search-modal input[type="search"] {
+		width: 600px;
+		margin: 314px auto 0;
+	}
+}
 </style>
 
 
@@ -102,12 +109,13 @@ a.link-list__link i.fa.fa-heart {
 <script>
 	document.title = "How To Get Help | Into Profits";
 	document.querySelector('a[href="https://web.facebook.com/groups/612071275960275"]').setAttribute("target", "_blank");
+	document.querySelector('.header__content--desktop i.fa.fa-facebook').setAttribute('class', 'fab fa-facebook-f' )
+	document.querySelector('.header__content--mobile i.fa.fa-facebook').setAttribute('class', 'fab fa-facebook-f' )
 
 	var searchBox = document.querySelector('.search-modal');
 	var searchLink = 'https://app.intoprofits.com/products/apex-seller-grant-s-design/search?q='
 
 
-	document.querySelector('i.fa.fa-facebook').setAttribute('class', 'fab fa-facebook-f' )
 	document.querySelector('.openSearchModal').addEventListener('click', toggleSearchModal)
 	document.querySelector('span.close').addEventListener('click', toggleSearchModal)
 

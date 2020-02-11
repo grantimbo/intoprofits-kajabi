@@ -20,7 +20,7 @@ button.disabled {
 }
 .testimonial .wrap {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr;
     grid-gap: 2rem;
     justify-items: center;
     margin-bottom: 4rem;
@@ -175,6 +175,10 @@ button.disabled {
 .process-section input::placeholder {
   color: #aba9a9;
 }
+.process-section iframe {
+    display: block;
+    width: 100%;
+}
 
 /* step one */
 .star-rate span {
@@ -209,7 +213,7 @@ button.disabled {
     color: #868686;
     font-size: 14px;
     border-radius: 4px;
-    width: 340px;
+    width: 100%;
     outline: 0;
 }
 .qna span.qa-error {
@@ -248,6 +252,17 @@ button.disabled {
 .powered-by {
     display: none;
 }
+
+@media (min-width: 750px) {
+	.testimonial .wrap {
+        grid-template-columns: 1fr 3fr;
+    }
+    .qna select {
+        width: 340px;
+    }
+}
+    
+
 </style>
 
 
@@ -256,7 +271,7 @@ button.disabled {
 		<p><img style="display: inline-block;  max-width: 70px;" src="https://kajabi-storefronts-production.global.ssl.fastly.net/kajabi-storefronts-production/themes/1483490/settings_images/eojzuqzXQZmOmYdUP3ke_lock.png" alt=""></p>
 		<h1>Unlock “The Apex Mindset Week” By Uploading A Testimonial</h1>
 		<p>Want to get FREE instant access to the mindset bonus content?</p>
-		<p>Upload a video testimonial where you share your experience of the Apex Seller program and we'll unlock an additional week of content for you!</p>
+		<p>Upload a video testimonial where you share your experience of the Apex Seller program</br> and we'll unlock an additional week of content for you!</p>
 		<p>You'll get free instant access to “Week 7 - The Apex Mindset".</p>
 		<p>Click the "Next" button to get started.</p>
 		<button class="btn btn-primary nxtStep" onclick="startProcess()">Next</button>
@@ -326,7 +341,7 @@ button.disabled {
 		            	<option value="yes">Yes</option>
 		            	<option value="no">No</option>
 		            </select>
-					<span class="qa-error">You should state your first and last name and location?</span>
+					<span class="qa-error">You should state your first and last name and location.</span>
 				</div>
 
 				<div class="qna hasExperience">
@@ -336,7 +351,7 @@ button.disabled {
 		            	<option value="yes">Yes</option>
 		            	<option value="no">No</option>
 		            </select>
-					<span class="qa-error">You should talk about your experience before, during and after the program?</span>
+					<span class="qa-error">You should talk about your experience before, during and after the program.</span>
 				</div>
 
 				<div class="qna isLong">
@@ -346,7 +361,7 @@ button.disabled {
 		            	<option value="yes">Yes</option>
 		            	<option value="no">No</option>
 		            </select>
-					<span class="qa-error">Your video should be between 1 - 3 minutes long</span>
+					<span class="qa-error">Your video should be between 1 - 3 minutes long.</span>
 				</div>
 
 				<div class="qna isClear">
@@ -356,7 +371,7 @@ button.disabled {
 		            	<option value="yes">Yes</option>
 		            	<option value="no">No</option>
 		            </select>
-					<span class="qa-error">Your video should have clear audio and video</span>
+					<span class="qa-error">Your video should have clear audio and video.</span>
 				</div>
 
 	            <button class="btn btn-primary disabled nxtStep" disabled onclick="stepTwoPart2()">Next</button>
@@ -393,6 +408,7 @@ button.disabled {
 
 
 <script>
+    document.title = "Testimonials | Into Profits";
 
 	function startProcess() {
 		document.querySelector('main.landing').style.display = "none";
@@ -578,7 +594,10 @@ button.disabled {
         document.querySelector('.circle-progress').classList.add('percent90')
         document.querySelector('.prog-label').innerHTML = "90%"
         
-        document.querySelector('.kajabi-form__content button[type="submit"]').innerHTML = "Submit Testimony"
+        var SubmitButton = document.querySelector('.kajabi-form__content button[type="submit"]')
+        
+        SubmitButton.innerHTML = "Submit Testimonial"
+        SubmitButton.style.background = "#0047ab"
         
     }
 
