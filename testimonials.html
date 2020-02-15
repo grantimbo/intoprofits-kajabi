@@ -111,8 +111,8 @@ button.disabled {
 .circle-progress.percent30 .left-side {
     transform: rotate(30deg);
 }
-.circle-progress.percent40 .left-side {
-    transform: rotate(50deg);
+.circle-progress.percent50 .left-side {
+    transform: rotate(90deg);
 }
 .circle-progress.percent60 .left-side {
     transform: rotate(90deg);
@@ -121,6 +121,13 @@ button.disabled {
     display: block;
     transform: rotate(-230deg);
 }
+.circle-progress.percent70 .left-side {
+    transform: rotate(90deg);
+}
+.circle-progress.percent70 .right-side {
+    display: block;
+    transform: rotate(-180deg);
+}
 .circle-progress.percent90 .left-side {
     transform: rotate(90deg);
 }
@@ -128,7 +135,8 @@ button.disabled {
     display: block;
     transform: rotate(-135deg);
 }
-.circle-progress.percent60 .prog-pie, 
+.circle-progress.percent60 .prog-pie,
+.circle-progress.percent70 .prog-pie,
 .circle-progress.percent90 .prog-pie{
     clip: auto;
 }
@@ -159,10 +167,10 @@ button.disabled {
     height: 44px;
     padding: 10px 20px 10px 10px;
     color: #151515;
-    border: 2px solid #e4e4e4;
+    border: 2px solid #d2d2d2;
     border-radius: 3px;
     outline: none;
-    background-color: #f3f5f7;
+    background-color: #fff;
     box-shadow: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -172,8 +180,26 @@ button.disabled {
     -o-transition: all 0.2s;
     transition: all 0.2s;
 }
+.process-section select {
+	background: #ffffff;
+    border: 2px solid #d2d2d2;
+    /* border: 2px solid #e4e4e4; */
+    /* padding: 8px 4px; */
+    padding: 10px 20px 10px 10px;
+    color: #868686;
+    font-size: 14px;
+    border-radius: 3px;
+    width: 100%;
+    outline: 0;
+}
+.process-section input::-webkit-input-placeholder { /* Edge */
+  color: #868686;
+}
+.process-section input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #868686;
+}
 .process-section input::placeholder {
-  color: #aba9a9;
+  color: #868686;
 }
 .process-section iframe {
     display: block;
@@ -205,16 +231,6 @@ button.disabled {
 }
 .qna p {
 	margin-bottom: 10px;
-}
-.qna select {
-	background: #ffffff;
-    border: 1px solid #d2d2d2;
-    padding: 8px 4px;
-    color: #868686;
-    font-size: 14px;
-    border-radius: 4px;
-    width: 100%;
-    outline: 0;
 }
 .qna span.qa-error {
 	display: none;
@@ -320,7 +336,24 @@ button.disabled {
 	                <span data-rate="5" title="Give 5 stars" onclick="changeRate(this)">★</span>
 	            </div>
 	            <button class="btn btn-primary disabled nxtStep" disabled onclick="stepOne()">Next</button>
-	        </div>
+            </div>
+
+            <div class="process-section one part2">
+	            <h1>Your Profile</h1>
+	            <p>Please complete the fields below.</p>
+                <p></p><input id="yourName" type="text" placeholder="First and Last Name" onchange="fullName(this)"></p>
+                <p></p><input id="yourLocation" type="text" placeholder="Location" onchange="locDetails(this)"></p>
+                <p></p><select id="yourLevel" onchange="level(this)">
+                    <option disabled selected hidden>Current Level</option>
+                    <option value="6 Figures">6 Figures</option>
+                    <option value="7 Figures">7 Figures</option>
+                    <option value="8 Figures">8 Figures</option>
+                </select>
+                </p>
+	            <button class="btn btn-primary nxtStep"  onclick="stepOnePart2()">Next</button>
+            </div>
+            
+
 	        <!-- /rate-program -->
 
 	        <div class="process-section two">
@@ -409,11 +442,13 @@ button.disabled {
 
 <script>
     document.title = "Testimonials | Into Profits";
+    document.querySelector('a[class="logo"][href="/"]').setAttribute("href", "/library");
 
 	function startProcess() {
 		document.querySelector('main.landing').style.display = "none";
 		document.querySelector('main.testimonial').style.display = "block";
 	}
+
     function inputMail(inputText) {
 
         var mail = inputText.value
@@ -444,6 +479,7 @@ button.disabled {
     function changeRate(rate) {
 
         var finalRate = rate.dataset.rate
+        // document.querySelector('.star-rate').classList.add('hasDataRate')
 
         if (finalRate == 1) {
             finalRate = '1 Star'
@@ -491,6 +527,31 @@ button.disabled {
         document.querySelector('input[id="form_submission_custom_2"]').value = finalRate
         console.log(finalRate)
 
+
+    }
+
+    function fullName(data) {
+
+        var fullName = data.value
+        document.querySelector('input[id="form_submission_name"]').value = fullName
+      
+    }
+
+    function locDetails(data) {
+
+        var locationDetails = data.value
+        document.querySelector('input[id="form_submission_custom_5"]').value = locationDetails
+
+    }
+
+    function level(data) {
+
+        var leVel = data.value
+
+        // let l = document.querySelector("#yourLevel")
+        // let level = l.options[l.selectedIndex].value;
+
+        document.querySelector('input[id="form_submission_custom_7"]').value = leVel
 
     }
 
@@ -546,10 +607,7 @@ button.disabled {
 
     function stepOne() {
         document.querySelector('div.process-section.one').classList.remove('active')
-        document.querySelector('div.process-section.two').classList.add('active')
-
-        document.querySelector('section.steps p.one').classList.remove('active')
-        document.querySelector('section.steps p.two').classList.add('active')
+        document.querySelector('div.process-section.one.part2').classList.add('active')
 
         document.querySelector('.circle-progress').classList.add('percent30')
         document.querySelector('.prog-label').innerHTML = "30%"
@@ -557,14 +615,35 @@ button.disabled {
         console.log('one')
     }
 
+    function stepOnePart2() {
+
+        let name = document.querySelector("#yourName").value
+        let location = document.querySelector("#yourLocation").value
+        let level = document.querySelector("#yourLevel").value
+
+        if (name == "" || location == "" || level == "Current Level") {
+            alert('Please complete all of the fields')
+        } else {
+            document.querySelector('div.process-section.one.part2').classList.remove('active')
+            document.querySelector('div.process-section.two').classList.add('active')
+
+            document.querySelector('section.steps p.one').classList.remove('active')
+            document.querySelector('section.steps p.two').classList.add('active')
+
+            document.querySelector('.circle-progress').classList.add('percent50')
+            document.querySelector('.prog-label').innerHTML = "50%"
+
+            console.log('one part2')
+        }
+    }
+
     function stepTwo() {
         document.querySelector('div.process-section.two').classList.remove('active')
         document.querySelector('div.process-section.two.part2').classList.add('active')
 
-
-        document.querySelector('.circle-progress').classList.remove('percent30')
-        document.querySelector('.circle-progress').classList.add('percent40')
-        document.querySelector('.prog-label').innerHTML = "40%"
+        document.querySelector('.circle-progress').classList.remove('percent50')
+        document.querySelector('.circle-progress').classList.add('percent60')
+        document.querySelector('.prog-label').innerHTML = "60%"
 
         console.log('two')
     }
@@ -576,9 +655,9 @@ button.disabled {
         document.querySelector('section.steps p.two').classList.remove('active')
         document.querySelector('section.steps p.three').classList.add('active')
 
-        document.querySelector('.circle-progress').classList.remove('percent40')
-        document.querySelector('.circle-progress').classList.add('percent60')
-        document.querySelector('.prog-label').innerHTML = "60%"
+        document.querySelector('.circle-progress').classList.remove('percent60')
+        document.querySelector('.circle-progress').classList.add('percent70')
+        document.querySelector('.prog-label').innerHTML = "70%"
 
         console.log('two part 2')
     }
@@ -590,7 +669,7 @@ button.disabled {
         document.querySelector('section.steps p.three').classList.remove('active')
         document.querySelector('section.steps p.four').classList.add('active')
 
-        document.querySelector('.circle-progress').classList.remove('percent60')
+        document.querySelector('.circle-progress').classList.remove('percent70')
         document.querySelector('.circle-progress').classList.add('percent90')
         document.querySelector('.prog-label').innerHTML = "90%"
         
